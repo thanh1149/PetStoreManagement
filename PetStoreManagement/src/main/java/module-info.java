@@ -8,4 +8,8 @@ module com.petstoremanagement {
 
     opens com.petstoremanagement to javafx.fxml;
     exports com.petstoremanagement;
+
+    opens com.petstoremanagement.Controller to javafx.fxml;
+    exports com.petstoremanagement.Controller;
+
 }
