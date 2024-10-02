@@ -61,7 +61,6 @@ public class StaffController implements Initializable {
         cAction.setCellFactory(param -> new TableCell<Staff, Void>() {
             private final Button btnEdit = new Button("Edit");
             private final Button btnDelete = new Button("Delete");
-
             {
                 btnEdit.setOnAction(event -> {
                     Staff selectedStaff = getTableView().getItems().get(getIndex());
@@ -129,11 +128,13 @@ public class StaffController implements Initializable {
 
     private void handleEditButton(Staff selectedStaff) {
         try {
+            Staff fullStaffDetails = staffService.getStaffById(selectedStaff.getStaffID());
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/petstoremanagement/view/staff/edit-staff.fxml"));
             Parent editStaffPage = loader.load();
 
             EditStaffController editStaffController = loader.getController();
-            editStaffController.setSelectedStaff(selectedStaff);
+            editStaffController.setSelectedStaff(fullStaffDetails);
 
             staffContent.getChildren().clear();
             staffContent.getChildren().add(editStaffPage);

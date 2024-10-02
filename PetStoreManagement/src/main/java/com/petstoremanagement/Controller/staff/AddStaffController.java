@@ -39,17 +39,8 @@ public class AddStaffController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Fetch all roles and populate the ChoiceBox
-        cbRole.getItems().clear();
-        roles = FXCollections.observableArrayList(RoleService.getAllRole());
-        cbRole.setItems(roles);
+        cbRole.setItems(RoleService.getAllRole());
 
-        // Set the default value for the ChoiceBox if roles exist
-        if (!roles.isEmpty()) {
-            cbRole.setValue(roles.get(0));
-        }
-
-        // Set up the button's event handler
         btnAdd.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

@@ -24,7 +24,7 @@ public class EditStaffController implements Initializable {
     @FXML
     private TextField txtUsername;
     @FXML
-    private PasswordField txtPassword; // Mật khẩu mới
+    private PasswordField txtPassword;
     @FXML
     private TextField txtEmail;
     @FXML
@@ -35,22 +35,11 @@ public class EditStaffController implements Initializable {
     private Button btnEdit;
 
     private Staff selectedStaff;
-    private ObservableList<Role> roles;
     private final StaffService staffService = new StaffService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cbRole.getItems().clear();
-        roles = FXCollections.observableArrayList(RoleService.getAllRole());
-        cbRole.setItems(roles);
-
-        if (selectedStaff != null) {
-            txtFullName.setText(selectedStaff.getFullName());
-            txtUsername.setText(selectedStaff.getUsername());
-            txtEmail.setText(selectedStaff.getEmail());
-            txtPhone.setText(selectedStaff.getPhone());
-            cbRole.setValue(selectedStaff.getRole());
-        }
+        cbRole.setItems(RoleService.getAllRole());
         btnEdit.setOnAction(event -> handleEditStaff());
     }
 
@@ -61,39 +50,60 @@ public class EditStaffController implements Initializable {
             txtUsername.setText(staff.getUsername());
             txtEmail.setText(staff.getEmail());
             txtPhone.setText(staff.getPhone());
-            cbRole.setValue(staff.getRole());
+
+            // Safely handle the case where staff's role might be null
+            if (staff.getRole() != null) {
+                for (Role role : cbRole.getItems()) {
+                    if (role.getId().equals(staff.getRole().getId())) {
+                        cbRole.setValue(role);
+                        break;
+                    }
+                }
+            } else {
+                // If staff has no role, select the first role in the list or clear the selection
+                if (!cbRole.getItems().isEmpty()) {
+                    cbRole.setValue(cbRole.getItems().get(0));
+                } else {
+                    cbRole.setValue(null);
+                }
+                // Optionally, log this unusual situation
+                System.out.println("Warning: Staff with ID " + staff.getStaffID() + " has no assigned role.");
+            }
         }
     }
 
     private void handleEditStaff() {
         if (validateFields()) {
-            // Create a new staff object with the edited details
             selectedStaff.setFullName(txtFullName.getText());
             selectedStaff.setUsername(txtUsername.getText());
             selectedStaff.setEmail(txtEmail.getText());
             selectedStaff.setPhone(txtPhone.getText());
             selectedStaff.setRole(cbRole.getValue());
 
-            // Chỉ cập nhật mật khẩu nếu nó không trống
             if (!txtPassword.getText().isEmpty()) {
-                selectedStaff.setPassword(txtPassword.getText()); // Bcrypt sẽ được sử dụng trong service để mã hóa
+                selectedStaff.setPassword(txtPassword.getText());
             }
 
-            // Call the edit method from StaffService
-            staffService.edit(selectedStaff);
+            boolean success = StaffService.edit(selectedStaff);
+            if (success) {
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Staff updated successfully.");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Error", "Failed to update staff.");
+            }
         }
     }
 
     private boolean validateFields() {
-        if (txtFullName.getText().isEmpty() || txtUsername.getText().isEmpty() || txtEmail.getText().isEmpty() || txtPhone.getText().isEmpty()) {
-            showAlert("Error", "All fields must be filled.");
+        if (txtFullName.getText().isEmpty() || txtUsername.getText().isEmpty() ||
+                txtEmail.getText().isEmpty() || txtPhone.getText().isEmpty() || cbRole.getValue() == null) {
+            showAlert(Alert.AlertType.ERROR, "Error", "All fields must be filled.");
             return false;
         }
         return true;
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

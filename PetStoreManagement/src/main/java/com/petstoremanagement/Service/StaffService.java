@@ -7,8 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.sql.*;
 
 public class StaffService {
@@ -117,11 +115,11 @@ public class StaffService {
         return searchResult;
     }
 
-    public static void edit(Staff staff) {
+    public static boolean edit(Staff staff) {
         try {
             String sql = "UPDATE staff SET roleID = ?, Username = ?, Password = ?, FullName = ?, Email = ?, Phone = ? WHERE StaffID = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, staff.getRoleID());
+            pst.setString(1, staff.getRole().getId());
             pst.setString(2, staff.getUsername());
             if (!staff.getPassword().isEmpty()) {
                 String hashedPassword = BCrypt.hashpw(staff.getPassword(), BCrypt.gensalt());
@@ -149,6 +147,7 @@ public class StaffService {
         }catch (Exception e){
             e.printStackTrace();
         }
+        return true;
     }
 
     public static void remove(Staff staff) {
@@ -163,6 +162,32 @@ public class StaffService {
         }
     }
 
-
+    public Staff getStaffById(int id) {
+        Staff staff = null;
+        String sql = "SELECT s.*, r.id as role_id, r.title as role_title FROM staff s " +
+                "LEFT JOIN role r ON s.roleID = r.id WHERE s.StaffID = ?";
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setInt(1, id);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    staff = new Staff();
+                    staff.setStaffID(rs.getInt("StaffID"));
+                    staff.setFullName(rs.getString("Fullname"));
+                    staff.setUsername(rs.getString("Username"));
+                    staff.setEmail(rs.getString("Email"));
+                    staff.setPhone(rs.getString("Phone"));
+                    staff.setPassword(rs.getString("Password"));
+                    // Create and set Role object
+                    Role role = new Role();
+                    role.setId(rs.getString("role_id"));
+                    role.setTitle(rs.getString("role_title"));
+                    staff.setRole(role);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return staff;
+    }
 
 }
