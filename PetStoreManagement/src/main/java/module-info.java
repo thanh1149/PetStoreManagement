@@ -6,10 +6,25 @@ module com.petstoremanagement {
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
 
+    requires java.sql;
+
+    requires jbcrypt;
+
     opens com.petstoremanagement to javafx.fxml;
     exports com.petstoremanagement;
 
     opens com.petstoremanagement.Controller to javafx.fxml;
     exports com.petstoremanagement.Controller;
+
+    opens com.petstoremanagement.Service to javafx.fxml;
+    exports com.petstoremanagement.Service;
+
+    opens com.petstoremanagement.Model to javafx.fxml;
+    exports com.petstoremanagement.Model;
+    exports com.petstoremanagement.Global;
+    opens com.petstoremanagement.Global to javafx.fxml;
+    exports com.petstoremanagement.Controller.staff;
+    opens com.petstoremanagement.Controller.staff to javafx.fxml;
+
 
 }
