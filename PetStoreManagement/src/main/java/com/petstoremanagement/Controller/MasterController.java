@@ -2,7 +2,6 @@ package com.petstoremanagement.Controller;
 
 import com.petstoremanagement.Global.AppProperties;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,23 +21,14 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MasterController implements Initializable {
-    @FXML
-    private Label lblUsrName;
-    @FXML
-    private Button btnLogout;
-    @FXML
-    private Button btnHome;
-    @FXML
-    private Button btnProducts;
-    @FXML
-    private Button btnCustomers;
-    @FXML
-    private Button btnOrders;
-    @FXML
-    private Button btnStaff;
-    @FXML
-    private StackPane dashContent;
-
+    @FXML private Label lblUsrName;
+    @FXML private Button btnLogout;
+    @FXML private Button btnHome;
+    @FXML private Button btnProducts;
+    @FXML private Button btnCustomers;
+    @FXML private Button btnService;
+    @FXML private Button btnStaff;
+    @FXML private StackPane dashContent;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,10 +41,13 @@ public class MasterController implements Initializable {
 
         btnLogout.setOnAction(this::showLogoutConfirmation);
         btnStaff.setOnAction(this::handleStaffButton);
+        btnService.setOnAction(this::handleServiceButton);
         btnHome.setOnAction(this::handleHomeButton);
+
+        // Clear the dashContent initially
+        dashContent.getChildren().clear();
     }
 
-    //HANDLE LOG OUT BUTTON
     private void showLogoutConfirmation(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("CONFIRMATION");
@@ -68,6 +61,7 @@ public class MasterController implements Initializable {
             alert.close();
         }
     }
+
     private void handleLogout(ActionEvent event) {
         try {
             Parent loginView = FXMLLoader.load(getClass().getResource("/com/petstoremanagement/login.fxml"));
@@ -84,32 +78,28 @@ public class MasterController implements Initializable {
         }
     }
 
-    //HANDLE STAFF BUTTON
     public void handleStaffButton(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/petstoremanagement/view/staff/staff.fxml"));
-            Parent staffPage = loader.load();
-
-            dashContent.getChildren().clear();
-            dashContent.getChildren().add(staffPage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        loadContent("/com/petstoremanagement/view/staff/staff.fxml");
     }
 
-    //HANDLE HOME BUTTON (FIX DUPLICATE)
+    public void handleServiceButton(ActionEvent event) {
+        loadContent("/com/petstoremanagement/view/service/service.fxml");
+    }
+
     public void handleHomeButton(ActionEvent event) {
+        // Clear the dashContent when returning to home
+        dashContent.getChildren().clear();
+    }
+
+    private void loadContent(String fxmlPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/petstoremanagement/view/master.fxml"));
-            Parent staffPage = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent content = loader.load();
 
             dashContent.getChildren().clear();
-            dashContent.getChildren().add(staffPage);
+            dashContent.getChildren().add(content);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
-

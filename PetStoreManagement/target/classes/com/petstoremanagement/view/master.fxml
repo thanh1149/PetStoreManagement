@@ -26,13 +26,13 @@
                              <font>
                                 <Font name="Century" size="15.0" />
                              </font></Button>
-                        <Button fx:id="btnOrders" contentDisplay="TOP" layoutY="196.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Orders" />
+<!--                        <Button fx:id="btnOrders" contentDisplay="TOP" layoutY="196.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Orders" />-->
                         <Button fx:id="btnStaff" contentDisplay="TOP" layoutY="196.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Staff" textAlignment="CENTER">
                              <font>
                                 <Font name="Century" size="15.0" />
                              </font>
                         </Button>
-                        <Button fx:id="btnSettings" contentDisplay="TOP" layoutY="376.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Settings" textAlignment="CENTER">
+                        <Button fx:id="btnService" contentDisplay="TOP" layoutY="376.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Services" textAlignment="CENTER">
                              <font>
                                 <Font name="Century" size="15.0" />
                              </font>
@@ -64,7 +64,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="424.0" prefWidth="427.0">
                             <ImageView fitHeight="41.0" fitWidth="45.0" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../assets/logo.jpg" />
+                                    <Image url="@../../../picture/logo.jpg" />
                                 </image>
                                 <HBox.margin>
                                     <Insets left="10.0" />

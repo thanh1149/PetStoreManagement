@@ -3,11 +3,10 @@ package com.petstoremanagement.Controller;
 import com.petstoremanagement.Global.AppProperties;
 import com.petstoremanagement.Service.LoginService;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,45 +23,48 @@ public class LoginController implements Initializable {
     @FXML private Button btnLogin;
     @FXML private Label lbInform;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnLogin.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                boolean isLogin = true;
-                String username = txtUsername.getText();
-                String password = txtPassword.getText();
+        btnLogin.setOnAction(this::handleLogin);
+    }
 
-                if(username.isEmpty() || password.isEmpty()){
-                    lbInform.setText("Username or Password must not empty.");
-                    lbInform.setStyle("-fx-text-fill: red");
-                    isLogin = false;
-                }else {
-                    if(!LoginService.login(username,password)){
-                        lbInform.setText("Invalid username or password");
-                        lbInform.setStyle("-fx-text-fill: red");
-                        isLogin = false;
-                    }
-                }
-                if (isLogin){
-                    AppProperties.setProperty("user.name",username);
-                    AppProperties.setProperty("user.loggedin","true");
-                    Node node = (Node) event.getSource();
-                    Stage stage = (Stage) node.getScene().getWindow();
-                    stage.close();
-                    //loading layout
-                    try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/petstoremanagement/view/master.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load(),800,600);
-                        stage.setTitle("PetStoreManagement");
-                        stage.setScene(scene);
-                        stage.show();
-                    }catch (IOException e){
-                        System.out.println(e.getMessage());
-                    }
-                }
-            }
-        });
+    private void handleLogin(ActionEvent event) {
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            showError("Username or Password must not be empty.");
+            return;
+        }
+
+        if (!LoginService.login(username, password)) {
+            showError("Invalid username or password");
+            return;
+        }
+
+        AppProperties.setProperty("user.name", username);
+        AppProperties.setProperty("user.loggedin", "true");
+
+        loadMasterView(event);
+    }
+
+    private void showError(String message) {
+        lbInform.setText(message);
+        lbInform.setStyle("-fx-text-fill: red");
+    }
+
+    private void loadMasterView(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/petstoremanagement/view/master.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage) btnLogin.getScene().getWindow();
+            Scene scene = new Scene(root, 1200, 650);
+            stage.setTitle("PetStoreManagement");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showError("Failed to load master view. Error: " + e.getMessage());
+        }
     }
 }

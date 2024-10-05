@@ -124,6 +124,7 @@ public class StaffController implements Initializable {
         } else {
             tblStaff.setItems(staffs);
         }
+        tblStaff.refresh();
     }
 
     private void handleEditButton(Staff selectedStaff) {

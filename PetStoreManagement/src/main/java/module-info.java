@@ -23,8 +23,11 @@ module com.petstoremanagement {
     exports com.petstoremanagement.Model;
     exports com.petstoremanagement.Global;
     opens com.petstoremanagement.Global to javafx.fxml;
+
     exports com.petstoremanagement.Controller.staff;
     opens com.petstoremanagement.Controller.staff to javafx.fxml;
 
+    exports com.petstoremanagement.Controller.service;
+    opens com.petstoremanagement.Controller.service to javafx.fxml;
 
 }
