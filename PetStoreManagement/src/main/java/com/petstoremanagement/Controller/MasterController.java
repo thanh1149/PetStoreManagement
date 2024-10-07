@@ -43,8 +43,8 @@ public class MasterController implements Initializable {
         btnStaff.setOnAction(this::handleStaffButton);
         btnService.setOnAction(this::handleServiceButton);
         btnHome.setOnAction(this::handleHomeButton);
+        btnProducts.setOnAction(this::handleProductButton);
 
-        // Clear the dashContent initially
         dashContent.getChildren().clear();
     }
 
@@ -84,6 +84,10 @@ public class MasterController implements Initializable {
 
     public void handleServiceButton(ActionEvent event) {
         loadContent("/com/petstoremanagement/view/service/service.fxml");
+    }
+
+    public void handleProductButton(ActionEvent event) {
+        loadContent("/com/petstoremanagement/view/product/product.fxml");
     }
 
     public void handleHomeButton(ActionEvent event) {

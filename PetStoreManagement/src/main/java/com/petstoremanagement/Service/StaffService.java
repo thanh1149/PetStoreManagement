@@ -18,12 +18,15 @@ public class StaffService {
                 "FROM staff s " +
                 "JOIN role r ON s.roleID = r.id " +
                 "WHERE s.Username = ?";
-        Staff staff = new Staff();
+        Staff staff = null;
+
         try {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, username);
             ResultSet rs = pst.executeQuery();
+
             if (rs.next()) {
+                staff = new Staff();
                 staff.setUsername(username);
                 staff.setPassword(rs.getString("Password"));
                 staff.setRoleID(rs.getString("roleID"));
@@ -32,10 +35,13 @@ public class StaffService {
                 role.setId(rs.getString("roleID"));
                 role.setTitle(rs.getString("title"));
                 staff.setRole(role);
+            } else {
+                System.out.println("No username found.");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Lỗi truy vấn: " + e.getMessage());
         }
+
         return staff;
     }
 

@@ -30,4 +30,7 @@ module com.petstoremanagement {
     exports com.petstoremanagement.Controller.service;
     opens com.petstoremanagement.Controller.service to javafx.fxml;
 
+    exports com.petstoremanagement.Controller.product;
+    opens com.petstoremanagement.Controller.product to javafx.fxml;
+
 }

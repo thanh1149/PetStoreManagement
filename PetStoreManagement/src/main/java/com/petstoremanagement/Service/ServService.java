@@ -110,44 +110,6 @@ public class ServService {
         return searchResult;
     }
 
-//    public static boolean edit(Service service) {
-//        try {
-//            String sql = "UPDATE service SET name = ?, description = ?, price = ?, CategoryID = ?, ServiceImage = ?, created_at = ?, update_at = ? WHERE id = ?";
-//            PreparedStatement pst = con.prepareStatement(sql);
-//            pst.setString(1, service.getName());
-//            pst.setString(2, service.getDescription());
-//            pst.setDouble(3, service.getPrice());
-//            pst.setInt(4, service.getCategory().getId());
-//            if (service.getServiceImage() != null) {
-//                String url = service.getServiceImage().getUrl();
-//                InputStream inputStream = new URL(url).openStream();
-//                pst.setBinaryStream(5, inputStream);
-//            } else {
-//                pst.setNull(5, Types.BLOB);
-//            }
-//            pst.setTimestamp(6,service.getCreated_at());
-//            pst.setTimestamp(7, new Timestamp(System.currentTimeMillis()));
-//            pst.setInt(8,service.getId());
-//            pst.executeUpdate();
-//
-//            serviceObservableList.stream()
-//                    .filter(s -> s.getId() == service.getId()).findFirst()
-//                    .ifPresent(s ->{
-//                        s.setName(service.getName());
-//                        s.setDescription(service.getDescription());
-//                        s.setPrice(service.getPrice());
-//                        s.setCategoryID(service.getCategoryID());
-//                        s.setServiceImage(service.getServiceImage());
-//                        s.setCreated_at(service.getCreated_at());
-//                        s.setUpdated_at(new Timestamp(System.currentTimeMillis()));
-//
-//                    });
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return true;
-//    }
-
     public static boolean edit(Service service) {
         try {
             String sql = "UPDATE service SET name = ?, description = ?, price = ?, CategoryID = ?, ServiceImage = ?, created_at = ?, update_at = ? WHERE id = ?";

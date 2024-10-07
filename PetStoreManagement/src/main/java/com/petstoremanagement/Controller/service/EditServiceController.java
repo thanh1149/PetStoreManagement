@@ -1,6 +1,5 @@
 package com.petstoremanagement.Controller.service;
-
-import com.petstoremanagement.Global.ServiceValidate; // Sử dụng lớp để kiểm tra dữ liệu cho service
+import com.petstoremanagement.Global.ServiceValidate;
 import com.petstoremanagement.Model.Category;
 import com.petstoremanagement.Model.Service;
 import com.petstoremanagement.Service.CategoryService;
@@ -32,8 +31,6 @@ public class EditServiceController implements Initializable {
     private ChoiceBox<Category> cbCategory;
     @FXML
     private Button btnEditService;
-    @FXML
-    private Button btnChangeImage;
 
     private File selectedImageFile;
     private Service selectedService;
