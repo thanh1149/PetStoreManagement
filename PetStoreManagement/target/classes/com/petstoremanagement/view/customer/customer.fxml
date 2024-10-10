@@ -4,8 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petstoremanagement.Controller.staff.StaffController">
-    <StackPane fx:id="staffContent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petstoremanagement.Controller.customer.CustomerController">
+    <StackPane fx:id="customerContent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <BorderPane prefHeight="521.0" prefWidth="743.0">
             <padding>
@@ -24,20 +24,19 @@
                         <Insets top="20.0"/>
                     </BorderPane.margin>
                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                        <TextField fx:id="txtStaffSearch" layoutX="1.0" layoutY="2.0" prefHeight="25.0"
-                                   prefWidth="291.0" promptText="Search staff"/>
+                        <TextField fx:id="txtCustomerSearch" layoutX="1.0" layoutY="2.0" prefHeight="25.0"
+                                   prefWidth="291.0" promptText="Search customer by phone"/>
                         <Button fx:id="btnSearch" layoutX="300.0" layoutY="2.0" mnemonicParsing="false" styleClass="button, info, sm" prefHeight="26.0" text="Search"/>
                     </AnchorPane>
-                    <Button fx:id="btnAddStaff" alignment="CENTER_RIGHT" styleClass="button, success, sm" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="26.0" text="Add New Staff" textAlignment="RIGHT" GridPane.columnIndex="1" />
                 </GridPane>
             </top>
             <center>
-                <TableView fx:id="tblStaff" editable="true" prefHeight="663.0" prefWidth="1220.0">
+                <TableView fx:id="tblCustomer" editable="true" prefHeight="663.0" prefWidth="1220.0">
                     <columns>
-                        <TableColumn fx:id="cFullName" prefWidth="75.0" text="FullName"/>
+                        <TableColumn fx:id="cName" prefWidth="75.0" text="Name"/>
                         <TableColumn fx:id="cEmail" prefWidth="75.0" text="Email"/>
-                        <TableColumn fx:id="cUsername" prefWidth="75.0" text="Username"/>
                         <TableColumn fx:id="cPhone" prefWidth="125.0" text="Phone"/>
+                        <TableColumn fx:id="cAddress" prefWidth="125.0" text="Address"/>
                         <!-- Cột Action -->
                         <TableColumn fx:id="cAction" prefWidth="150.0" text="Action"/>
                     </columns>

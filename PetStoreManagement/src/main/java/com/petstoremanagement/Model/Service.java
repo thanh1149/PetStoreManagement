@@ -1,14 +1,14 @@
 package com.petstoremanagement.Model;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
-import javafx.scene.text.Text;
-
 import java.sql.Timestamp;
 
 public class Service {
     private int id;
     private int CategoryID;
-    private String name;
+    private StringProperty name;  // Sử dụng StringProperty cho tên dịch vụ
     private String description;
     private double price;
     private Image image;
@@ -16,11 +16,14 @@ public class Service {
     private Timestamp updated_at;
     private Category category;
 
-    public Service(){}
+    public Service() {
+        this.name = new SimpleStringProperty();  // Khởi tạo StringProperty
+    }
+
     public Service(int id, int categoryID, String name, String description, double price, Image image, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         CategoryID = categoryID;
-        this.name = name;
+        this.name = new SimpleStringProperty(name);  // Khởi tạo StringProperty
         this.description = description;
         this.price = price;
         this.image = image;
@@ -45,11 +48,15 @@ public class Service {
     }
 
     public String getName() {
-        return name;
+        return name.get();  // Lấy giá trị từ StringProperty
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);  // Đặt giá trị cho StringProperty
+    }
+
+    public StringProperty nameProperty() {
+        return name;  // Trả về StringProperty để sử dụng với TableView
     }
 
     public String getDescription() {

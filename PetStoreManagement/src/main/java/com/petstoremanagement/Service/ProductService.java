@@ -201,7 +201,7 @@ public class ProductService {
                     product.setCreated_at(rs.getTimestamp("created_at"));
                     product.setUpdated_at(rs.getTimestamp("update_at"));
 
-                    // Create and set Role object
+                    // Create and set Product object
                     Category category = new Category();
                     category.setId(rs.getInt("category_id"));
                     category.setName(rs.getString("category_name"));

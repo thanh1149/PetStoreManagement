@@ -33,4 +33,7 @@ module com.petstoremanagement {
     exports com.petstoremanagement.Controller.product;
     opens com.petstoremanagement.Controller.product to javafx.fxml;
 
+    exports com.petstoremanagement.Controller.customer;
+    opens com.petstoremanagement.Controller.customer to javafx.fxml;
+
 }
