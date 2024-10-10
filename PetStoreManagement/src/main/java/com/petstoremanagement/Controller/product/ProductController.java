@@ -72,8 +72,8 @@ public class ProductController implements Initializable {
                     imageView.setImage(image);
                     imageView.setFitHeight(200);
                     imageView.setFitWidth(200);
-                    imageView.setPreserveRatio(true); // Giữ tỷ lệ hình ảnh
-                    imageView.setSmooth(true); // Làm cho hình ảnh mượt mà
+                    imageView.setPreserveRatio(true);
+                    imageView.setSmooth(true);
                     setGraphic(imageView);
                     setAlignment(Pos.CENTER);
                 }

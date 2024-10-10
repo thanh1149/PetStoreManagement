@@ -108,7 +108,7 @@ public class AddServiceController implements Initializable {
         txtPrice.clear();
         cbCategory.setValue(null);
         imgService.setImage(null);
-        selectedImageFile = null; // Reset lại biến hình ảnh
+        selectedImageFile = null;
     }
 
 }

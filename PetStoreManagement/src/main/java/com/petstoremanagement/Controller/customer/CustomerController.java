@@ -1,6 +1,5 @@
 package com.petstoremanagement.Controller.customer;
 
-import com.petstoremanagement.Controller.staff.EditStaffController;
 import com.petstoremanagement.Model.Customer;
 import com.petstoremanagement.Model.Order;
 import com.petstoremanagement.Model.ServiceBooking;
@@ -113,7 +112,6 @@ public class CustomerController implements Initializable {
             serviceBookingController.setCustomerName(selectedCustomer.getName());
             serviceBookingController.setSelectedCustomerBooking(customerBooking);
 
-            // Cập nhật nội dung hiển thị
             customerContent.getChildren().clear();
             customerContent.getChildren().add(serviceBookingPage);
         } catch (IOException e) {
@@ -132,7 +130,6 @@ public class CustomerController implements Initializable {
             orderController.setCustomerName(selectedCustomer.getName());
             orderController.setSelectedCustomerOrder(customerOrder);
 
-            // Cập nhật nội dung hiển thị
             customerContent.getChildren().clear();
             customerContent.getChildren().add(orderPage);
         } catch (IOException e) {

@@ -1,13 +1,10 @@
 package com.petstoremanagement.Controller.product;
 
 import com.petstoremanagement.Global.ProductValidate;
-import com.petstoremanagement.Global.ServiceValidate;
 import com.petstoremanagement.Model.Category;
 import com.petstoremanagement.Model.Product;
-import com.petstoremanagement.Model.Service;
 import com.petstoremanagement.Service.CategoryService;
 import com.petstoremanagement.Service.ProductService;
-import com.petstoremanagement.Service.ServService;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -110,8 +107,7 @@ public class EditProductController implements Initializable {
         String quantity = txtQuantity.getText();
         Category selectedCategory = cbCategory.getValue();
 
-        if (!ProductValidate.isNotEmpty(productName) || !ProductValidate.isNotEmpty(description)
-                || !ProductValidate.isNotEmpty(price) || !ProductValidate.isNotEmpty(quantity) || selectedCategory == null) {
+        if (!ProductValidate.isNotEmpty(productName) || !ProductValidate.isNotEmpty(description) || !ProductValidate.isNotEmpty(price) || !ProductValidate.isNotEmpty(quantity) || selectedCategory == null) {
             showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all fields.");
             return false;
         }

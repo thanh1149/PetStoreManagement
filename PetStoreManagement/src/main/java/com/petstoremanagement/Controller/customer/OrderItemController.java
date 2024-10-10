@@ -29,7 +29,7 @@ public class OrderItemController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cPrice.setCellValueFactory(new PropertyValueFactory<OrderItem, String>("UnitPrice"));
         cQuantity.setCellValueFactory(new PropertyValueFactory<OrderItem, String>("Quantity"));
-        cProduct.setCellValueFactory(cellData -> cellData.getValue().getProduct().nameProperty());  // Hiển thị tên status
+        cProduct.setCellValueFactory(cellData -> cellData.getValue().getProduct().nameProperty());
 
         tblOrderItem.setItems(orderItems);
     }

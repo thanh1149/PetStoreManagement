@@ -28,9 +28,9 @@ public class ServiceBookingController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cServiceName.setCellValueFactory(cellData -> cellData.getValue().getService().nameProperty());  // Hiển thị tên dịch vụ
+        cServiceName.setCellValueFactory(cellData -> cellData.getValue().getService().nameProperty());
         cBookingDate.setCellValueFactory(new PropertyValueFactory<ServiceBooking, String>("BookingDate"));
-        cStatus.setCellValueFactory(cellData -> cellData.getValue().getStatus().titleProperty());  // Hiển thị tên status
+        cStatus.setCellValueFactory(cellData -> cellData.getValue().getStatus().titleProperty());
         
         tblBooking.setItems(serviceBookings);
     }

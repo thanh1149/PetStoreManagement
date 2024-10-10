@@ -81,7 +81,6 @@ public class OrderController implements Initializable {
             OrderItemController orderItemController = loader.getController();
             orderItemController.setSelectedCustomerOrder(orderItems);
 
-            // Cập nhật nội dung hiển thị
             orderContent.getChildren().clear();
             orderContent.getChildren().add(orderPage);
         } catch (IOException e) {
