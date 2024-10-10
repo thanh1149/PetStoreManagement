@@ -1,0 +1,128 @@
+CREATE DATABASE petstoremanagement /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE petstoremanagement;
+
+CREATE TABLE `category` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `customer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `CustomerID` int NOT NULL,
+  `OrderDate` timestamp NOT NULL,
+  `TotalAmount` double NOT NULL,
+  `StatusID` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `CustomerID` (`CustomerID`),
+  KEY `StatusID` (`StatusID`),
+  CONSTRAINT `order_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`id`),
+  CONSTRAINT `order_ibfk_2` FOREIGN KEY (`StatusID`) REFERENCES `status` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `orderitem` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `OrderID` int NOT NULL,
+  `ProductID` int NOT NULL,
+  `Quantity` int NOT NULL,
+  `UnitPrice` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `OrderID` (`OrderID`),
+  KEY `ProductID` (`ProductID`),
+  CONSTRAINT `orderitem_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `order` (`id`),
+  CONSTRAINT `orderitem_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `product` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `description` text,
+  `price` double NOT NULL,
+  `StockQuantity` int NOT NULL,
+  `CategoryID` int DEFAULT NULL,
+  `ProductImage` longblob,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `CategoryID` (`CategoryID`),
+  CONSTRAINT `product_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `role` (
+  `id` varchar(50) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `service` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `description` text,
+  `price` double NOT NULL,
+  `CategoryID` int DEFAULT NULL,
+  `ServiceImage` longblob,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `CategoryID` (`CategoryID`),
+  CONSTRAINT `service_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `servicebooking` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `CustomerID` int NOT NULL,
+  `ServiceID` int NOT NULL,
+  `BookingDate` timestamp NOT NULL,
+  `StatusID` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `CustomerID` (`CustomerID`),
+  KEY `ServiceID` (`ServiceID`),
+  KEY `StatusID` (`StatusID`),
+  CONSTRAINT `servicebooking_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`id`),
+  CONSTRAINT `servicebooking_ibfk_2` FOREIGN KEY (`ServiceID`) REFERENCES `service` (`id`),
+  CONSTRAINT `servicebooking_ibfk_3` FOREIGN KEY (`StatusID`) REFERENCES `status` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `staff` (
+  `StaffID` int NOT NULL AUTO_INCREMENT,
+  `roleID` varchar(50) NOT NULL,
+  `Username` varchar(50) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `FullName` varchar(100) NOT NULL,
+  `Email` varchar(100) DEFAULT NULL,
+  `Phone` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`StaffID`),
+  KEY `fk_role` (`roleID`),
+  CONSTRAINT `fk_role` FOREIGN KEY (`roleID`) REFERENCES `role` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `status` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+
+
+
+
