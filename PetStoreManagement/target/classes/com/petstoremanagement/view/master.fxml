@@ -25,8 +25,8 @@
                         <Button fx:id="btnCustomers" contentDisplay="TOP" layoutY="287.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Customers" textAlignment="CENTER">
                              <font>
                                 <Font name="Century" size="15.0" />
-                             </font></Button>
-<!--                        <Button fx:id="btnOrders" contentDisplay="TOP" layoutY="196.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Orders" />-->
+                             </font>
+                        </Button>
                         <Button fx:id="btnStaff" contentDisplay="TOP" layoutY="196.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Staff" textAlignment="CENTER">
                              <font>
                                 <Font name="Century" size="15.0" />
@@ -36,6 +36,16 @@
                              <font>
                                 <Font name="Century" size="15.0" />
                              </font>
+                        </Button>
+                        <Button fx:id="btnOrder" contentDisplay="TOP" layoutY="465.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Order" textAlignment="CENTER">
+                            <font>
+                                <Font name="Century" size="15.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="btnBooking" contentDisplay="TOP" layoutY="554.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="127.0" styleClass="menuButton" text="Booking" textAlignment="CENTER">
+                            <font>
+                                <Font name="Century" size="15.0" />
+                            </font>
                         </Button>
                     </AnchorPane>
                 </AnchorPane>

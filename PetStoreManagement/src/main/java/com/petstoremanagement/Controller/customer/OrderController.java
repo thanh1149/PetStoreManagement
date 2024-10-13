@@ -45,6 +45,7 @@ public class OrderController implements Initializable {
         cOrderDate.setCellValueFactory(new PropertyValueFactory<Order, String>("OrderDate"));
         cTotalAmount.setCellValueFactory(new PropertyValueFactory<Order, String>("TotalAmount"));
         cStatus.setCellValueFactory(cellData -> cellData.getValue().getStatus().titleProperty());
+
         tblOrder.setItems(orders);
         cAction.setCellFactory(param -> new TableCell<Order, Void>() {
             private final Button btnOrderItems = new Button("View Order Items");

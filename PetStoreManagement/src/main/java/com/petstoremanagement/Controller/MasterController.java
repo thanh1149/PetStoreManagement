@@ -29,6 +29,8 @@ public class MasterController implements Initializable {
     @FXML private Button btnService;
     @FXML private Button btnStaff;
     @FXML private StackPane dashContent;
+    @FXML private Button btnOrder;
+    @FXML private Button btnBooking;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,6 +47,8 @@ public class MasterController implements Initializable {
         btnHome.setOnAction(this::handleHomeButton);
         btnProducts.setOnAction(this::handleProductButton);
         btnCustomers.setOnAction(this::handleCustomerButton);
+        btnOrder.setOnAction(this::handleOrderButton);
+        btnBooking.setOnAction(this::handleBookingButton);
 
         dashContent.getChildren().clear();
     }
@@ -94,8 +98,16 @@ public class MasterController implements Initializable {
     public void handleCustomerButton(ActionEvent event) {
         loadContent("/com/petstoremanagement/view/customer/customer.fxml");
     }
+
+    public void handleOrderButton(ActionEvent event) {
+        loadContent("/com/petstoremanagement/view/order/order.fxml");
+    }
+
+    public void handleBookingButton(ActionEvent event) {
+        loadContent("/com/petstoremanagement/view/booking/booking.fxml");
+    }
+
     public void handleHomeButton(ActionEvent event) {
-        // Clear the dashContent when returning to home
         dashContent.getChildren().clear();
     }
 

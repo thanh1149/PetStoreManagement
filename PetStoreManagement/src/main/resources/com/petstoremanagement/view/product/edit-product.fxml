@@ -44,9 +44,7 @@
                     <Label text="Image" GridPane.rowIndex="5" />
                     <Button fx:id="btnChooseImage" text="Change Image" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
-                    <ImageView fx:id="imgProduct" fitHeight="200.0" fitWidth="200.0" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" /> <!-- Tăng kích thước hình ảnh -->
-
-                    <Button fx:id="btnEditProduct" mnemonicParsing="false" text="Edit Product" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+                    <ImageView fx:id="imgProduct" fitHeight="200.0" fitWidth="200.0" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 </GridPane>
             </center>
             <top>
@@ -59,6 +57,8 @@
                     </BorderPane.margin>
                 </Text>
             </top>
-        </BorderPane>
+        </BorderPane> <!-- Tăng kích thước hình ảnh -->
+
+           <Button fx:id="btnEditProduct" layoutX="484.0" layoutY="480.0" mnemonicParsing="false" text="Edit Product" />
     </children>
 </AnchorPane>

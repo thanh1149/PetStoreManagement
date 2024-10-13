@@ -19,7 +19,7 @@ public class Product {
     private Category category;
 
     public Product() {
-        this.name = new SimpleStringProperty();  // Khởi tạo StringProperty
+        this.name = new SimpleStringProperty();
     }
     public Product(int id, String name, String description, double price, int stockQuantity, int categoryID, Image image, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
@@ -34,7 +34,7 @@ public class Product {
     }
 
     public StringProperty nameProperty() {
-        return name;  // Trả về StringProperty để sử dụng với TableView
+        return name;
     }
     public int getId() {
         return id;
@@ -45,11 +45,11 @@ public class Product {
     }
 
     public String getName() {
-        return name.get();  // Lấy giá trị từ StringProperty
+        return name.get();
     }
 
     public void setName(String name) {
-        this.name.set(name);  // Đặt giá trị cho StringProperty
+        this.name.set(name);
     }
 
     public String getDescription() {

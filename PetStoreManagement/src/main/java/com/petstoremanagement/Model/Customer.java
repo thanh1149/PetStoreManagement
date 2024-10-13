@@ -1,26 +1,35 @@
 package com.petstoremanagement.Model;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.sql.Timestamp;
 
 public class Customer {
     private int id;
-    private String name;
+    private StringProperty name;
     private String phone;
     private String email;
     private String address;
     private Timestamp created_at;
     private Timestamp updated_at;
 
-    public Customer(){}
+    public Customer(){
+        this.name = new SimpleStringProperty();
+    }
 
     public Customer(int id, String name, String phone, String email,String address, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
-        this.name = name;
+        this.name = new SimpleStringProperty(name);
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.created_at = created_at;
         this.updated_at = updated_at;
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public int getId() {
@@ -40,11 +49,11 @@ public class Customer {
     }
 
     public String getName() {
-        return name;
+        return name.get();
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
 
     public String getPhone() {

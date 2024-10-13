@@ -70,8 +70,8 @@ public class ProductController implements Initializable {
                     setGraphic(null);
                 } else {
                     imageView.setImage(image);
-                    imageView.setFitHeight(200);
-                    imageView.setFitWidth(200);
+                    imageView.setFitHeight(150);
+                    imageView.setFitWidth(150);
                     imageView.setPreserveRatio(true);
                     imageView.setSmooth(true);
                     setGraphic(imageView);

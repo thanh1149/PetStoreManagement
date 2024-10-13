@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petstoremanagement.Controller.order.FilterController">
+    <content>
+        <VBox spacing="15">
+            <!-- Price Section -->
+            <Label text="Price filter" style="-fx-font-weight: bold;"/>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <TextField fx:id="txtMinPrice" promptText="Min" prefWidth="100"/>
+                <TextField fx:id="txtMaxPrice" promptText="Max" prefWidth="100"/>
+            </HBox>
+
+            <!-- Product Section -->
+            <Label text="Status filter" style="-fx-font-weight: bold;"/>
+            <CheckBox text="Done" fx:id="cbDone"/>
+            <CheckBox text="Pending" fx:id="cbPending"/>
+            <CheckBox text="Cancel" fx:id="cbCancel"/>
+
+            <!-- Bottom Buttons -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button text="Reset" fx:id="btnReset" styleClass="button, danger, sm"/>
+                <Button text="View result" fx:id="btnFilter" styleClass="button, success, sm"/>
+            </HBox>
+        </VBox>
+    </content>
+</DialogPane>

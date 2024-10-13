@@ -6,23 +6,23 @@ import java.sql.Timestamp;
 
 public class Status {
     private int id;
-    private StringProperty title;  // Sử dụng StringProperty thay vì String
+    private StringProperty title;
     private Timestamp created_at;
     private Timestamp updated_at;
 
     public Status() {
-        this.title = new SimpleStringProperty();  // Khởi tạo StringProperty
+        this.title = new SimpleStringProperty();
     }
 
     public Status(int id, String title, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
-        this.title = new SimpleStringProperty(title);  // Khởi tạo StringProperty
+        this.title = new SimpleStringProperty(title);
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
 
     public StringProperty titleProperty() {
-        return title;  // Trả về StringProperty để sử dụng với TableView
+        return title;
     }
 
     public int getId() {
@@ -34,11 +34,11 @@ public class Status {
     }
 
     public String getTitle() {
-        return title.get();  // Lấy giá trị từ StringProperty
+        return title.get();
     }
 
     public void setTitle(String title) {
-        this.title.set(title);  // Đặt giá trị cho StringProperty
+        this.title.set(title);
     }
 
     public Timestamp getCreated_at() {
@@ -59,6 +59,6 @@ public class Status {
 
     @Override
     public String toString() {
-        return getTitle();  // Hiển thị tên trạng thái thay vì chỉ id
+        return getTitle();
     }
 }
