@@ -24,13 +24,13 @@
                     <BorderPane.margin>
                         <Insets top="20.0" />
                     </BorderPane.margin>
-                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                    <AnchorPane GridPane.rowIndex="0">
                         <!-- Search Field -->
                         <TextField fx:id="txtBookingSearch" layoutX="1.0" layoutY="2.0" prefHeight="25.0" prefWidth="291.0" promptText="Search booking" />
                         <Button fx:id="btnSearchBooking" layoutX="300.0" layoutY="2.0" mnemonicParsing="false" prefHeight="26.0" styleClass="button, info, sm" text="Search" />
                     </AnchorPane>
                     <!-- Add filter, sort buttons -->
-                    <HBox spacing="10.0" GridPane.columnIndex="1">
+                    <HBox spacing="10.0" GridPane.rowIndex="0" GridPane.columnIndex="1" alignment="CENTER_RIGHT">
                         <Button fx:id="btnFilter" styleClass="button, info, sm" mnemonicParsing="false" prefHeight="26.0" text="Filter"/>
                         <MenuButton fx:id="mnSort" text="Sort" styleClass="button, info, sm" prefHeight="26.0">
                             <items>
