@@ -58,7 +58,7 @@ public class LoginController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/petstoremanagement/view/master.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = (Stage) btnLogin.getScene().getWindow();
-            Scene scene = new Scene(root, 1200, 650);
+            Scene scene = new Scene(root, 1200, 700);
             stage.setTitle("PetStoreManagement");
             stage.setScene(scene);
             stage.show();

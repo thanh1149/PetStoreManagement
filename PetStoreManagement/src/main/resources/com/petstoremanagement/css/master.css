@@ -1,26 +1,88 @@
-.menuButton{
-    -fx-border-width: 0px 0px 0px 5px;
-    -fx-border-radius: 0px;
-    -fx-background-radius: 0px;
-    -fx-text-fill: #4E4F52;
-    -fx-background-color: #e5e5e5;
-    -fx-min-height: 90;
+/* Pastel colors */
+.root {
+    -fx-background-color: #FFF0DB;
+    -fx-font-family: 'Arial', sans-serif;
 }
 
-.menuButton:hover{
-    -fx-background-color: #f3f3f3;
-    /*-fx-text-fill: white;*/
+.button {
+    -fx-background-color: #FFD3B6;
+    -fx-text-fill: #8E6E5D;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
 }
 
-#dashHead{
-    -fx-background-color: #e5e5e5;
+.button:hover {
+    -fx-background-color: #FFAB91;
 }
-#acDashBord{
-    -fx-background-color:#e5e5e5;
+
+.menuButton {
+    -fx-background-color: #A8E6CF;
+    -fx-text-fill: #3D6B5A;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 10px 10px 10px 45px; /* Extra left padding for icons */
+    -fx-background-radius: 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #8FD3C4;
+}
+
+.menuButton:hover {
+    -fx-background-color: #8FD3C4;
+}
+
+#dashHead {
+    -fx-background-color: #DCEDC1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+#lblUsrName {
+    -fx-font-weight: bold;
+    -fx-text-fill: #3D6B5A;
+}
+
+#btnLogout {
+    -fx-background-color: #FF9AA2;
+    -fx-text-fill: #FFFFFF;
+}
+
+#btnLogout:hover {
+    -fx-background-color: #FF8B8B;
+}
+
+.label {
+    -fx-text-fill: #3D6B5A;
+    -fx-font-weight: bold;
 }
 
 .table-view {
-    -fx-focus-color: #cecece;
-    -fx-effect: null;
-    -fx-outer-border : #cecece;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #A8E6CF;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3D6B5A;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
+.table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F5F5F5;
+}
+
+.table-cell {
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 10px;
 }
