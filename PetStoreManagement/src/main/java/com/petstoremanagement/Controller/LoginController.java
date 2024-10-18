@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -22,10 +23,12 @@ public class LoginController implements Initializable {
     @FXML private TextField txtPassword;
     @FXML private Button btnLogin;
     @FXML private Label lbInform;
+    @FXML private Hyperlink forgotPasswordLink;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnLogin.setOnAction(this::handleLogin);
+        forgotPasswordLink.setOnAction(this::handleForgotPassword);
     }
 
     private void handleLogin(ActionEvent event) {
@@ -65,6 +68,18 @@ public class LoginController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
             showError("Failed to load master view. Error: " + e.getMessage());
+        }
+    }
+
+    private void handleForgotPassword(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/petstoremanagement/view/forgot_password/forgot_password_email.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) forgotPasswordLink.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+            showError("Failed to load forgot password view. Error: " + e.getMessage());
         }
     }
 }
