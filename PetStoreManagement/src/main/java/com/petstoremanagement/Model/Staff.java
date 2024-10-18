@@ -1,5 +1,7 @@
 package com.petstoremanagement.Model;
 
+import java.time.LocalDateTime;
+
 public class Staff {
     private int staffID;
     private String roleID;
@@ -9,7 +11,8 @@ public class Staff {
     private String email;
     private String phone;
     private Role role;
-
+    private String reset_token;
+    private LocalDateTime reset_token_expiry;
     public Staff(){}
 
     public Staff(int staffID, String roleID, String username, String password, String fullName, String email, String phone) {
@@ -84,5 +87,21 @@ public class Staff {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getReset_token() {
+        return reset_token;
+    }
+
+    public void setReset_token(String reset_token) {
+        this.reset_token = reset_token;
+    }
+
+    public LocalDateTime getReset_token_expiry() {
+        return reset_token_expiry;
+    }
+
+    public void setReset_token_expiry(LocalDateTime reset_token_expiry) {
+        this.reset_token_expiry = reset_token_expiry;
     }
 }

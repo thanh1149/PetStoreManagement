@@ -20,6 +20,14 @@ CREATE TABLE `customer` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `status` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `order` (
   `id` int NOT NULL AUTO_INCREMENT,
   `CustomerID` int NOT NULL,
@@ -32,19 +40,6 @@ CREATE TABLE `order` (
   CONSTRAINT `order_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`id`),
   CONSTRAINT `order_ibfk_2` FOREIGN KEY (`StatusID`) REFERENCES `status` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `orderitem` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `OrderID` int NOT NULL,
-  `ProductID` int NOT NULL,
-  `Quantity` int NOT NULL,
-  `UnitPrice` double NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `OrderID` (`OrderID`),
-  KEY `ProductID` (`ProductID`),
-  CONSTRAINT `orderitem_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `order` (`id`),
-  CONSTRAINT `orderitem_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `product` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -60,6 +55,19 @@ CREATE TABLE `product` (
   KEY `CategoryID` (`CategoryID`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `orderitem` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `OrderID` int NOT NULL,
+  `ProductID` int NOT NULL,
+  `Quantity` int NOT NULL,
+  `UnitPrice` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `OrderID` (`OrderID`),
+  KEY `ProductID` (`ProductID`),
+  CONSTRAINT `orderitem_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `order` (`id`),
+  CONSTRAINT `orderitem_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `product` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `role` (
   `id` varchar(50) NOT NULL,
@@ -106,23 +114,9 @@ CREATE TABLE `staff` (
   `FullName` varchar(100) NOT NULL,
   `Email` varchar(100) DEFAULT NULL,
   `Phone` varchar(20) DEFAULT NULL,
+  `reset_token` VARCHAR(60) DEFAULT NULL,
+  `reset_token_expiry` DATETIME DEFAULT NULL,
   PRIMARY KEY (`StaffID`),
   KEY `fk_role` (`roleID`),
   CONSTRAINT `fk_role` FOREIGN KEY (`roleID`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `status` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL,
-  `updated_at` timestamp NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
-
-
-
-
-
-

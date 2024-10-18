@@ -1,0 +1,26 @@
+
+.right-pane {
+    -fx-background-color: #FEF9F2;
+    -fx-padding: 20px;
+    -fx-alignment: center;
+}
+
+.text-field, .password-field {
+    -fx-background-color: transparent;
+    -fx-border-color: #404040;
+    -fx-border-width: 1 1 1 1;
+    -fx-border-radius: 20px;
+    -fx-padding: 10px;
+}
+
+.login-button {
+    -fx-background-color: #FF7F50;
+    -fx-background-radius: 20px;
+    -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
+}
+
+#lbInform {
+    -fx-text-fill: red;
+}

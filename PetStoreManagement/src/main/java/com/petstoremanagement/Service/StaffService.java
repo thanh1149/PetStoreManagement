@@ -8,10 +8,69 @@ import javafx.collections.ObservableList;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class StaffService {
     private static final Connection con = MySQLConnection.getConnection();
     private static final ObservableList<Staff> staffObservableList = FXCollections.observableArrayList();
+
+    public boolean saveResetToken(String email, String token) {
+        String hashedToken = BCrypt.hashpw(token, BCrypt.gensalt());
+        LocalDateTime expiry = LocalDateTime.now().plusMinutes(15);
+        String sql = "UPDATE staff SET reset_token = ?, reset_token_expiry = ? WHERE Email = ?";
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, hashedToken);
+            pst.setTimestamp(2, Timestamp.valueOf(expiry));
+            pst.setString(3, email);
+            int affectedRows = pst.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean verifyResetToken(String email, String token) {
+        String sql = "SELECT reset_token, reset_token_expiry FROM staff WHERE Email = ?";
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                String storedHashedToken = rs.getString("reset_token");
+                LocalDateTime expiry = rs.getTimestamp("reset_token_expiry").toLocalDateTime();
+                return BCrypt.checkpw(token, storedHashedToken) && LocalDateTime.now().isBefore(expiry);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean clearResetToken(String email) {
+        String sql = "UPDATE staff SET reset_token = NULL, reset_token_expiry = NULL WHERE Email = ?";
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, email);
+            int affectedRows = pst.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean isEmailRegistered(String email) {
+        String sql = "SELECT COUNT(*) FROM staff WHERE Email = ?";
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public static Staff authenticate(String username) {
         String sql = "SELECT s.Password, s.roleID, r.title " +
@@ -95,6 +154,33 @@ public class StaffService {
         return staffObservableList;
     }
 
+    public int getStaffIdByEmail(String email) {
+        String sql = "SELECT StaffID FROM staff WHERE Email = ?";
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("StaffID");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // Return -1 if no staff found with the given email
+    }
+
+    public boolean updatePassword(String email, String newPassword) {
+        String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+        String sql = "UPDATE staff SET Password = ? WHERE Email = ?";
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, hashedPassword);
+            pst.setString(2, email);
+            int affectedRows = pst.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public static ObservableList<Staff> findStaffName(String name){
         ObservableList<Staff> searchResult = FXCollections.observableArrayList();

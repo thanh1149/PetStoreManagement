@@ -9,6 +9,7 @@ module com.petstoremanagement {
     requires java.sql;
 
     requires jbcrypt;
+    requires java.mail;
 
     opens com.petstoremanagement to javafx.fxml;
     exports com.petstoremanagement;
