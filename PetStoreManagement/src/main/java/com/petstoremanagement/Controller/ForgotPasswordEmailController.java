@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 
 public class ForgotPasswordEmailController {
 
@@ -24,6 +25,8 @@ public class ForgotPasswordEmailController {
 
     private StaffService staffService = new StaffService();
     private EmailService emailService = new EmailService();
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final int TOKEN_LENGTH = 6; // Length of the token
 
     @FXML
     public void initialize() {
@@ -47,7 +50,15 @@ public class ForgotPasswordEmailController {
     }
 
     private String generateToken() {
-        return String.format("%06d", (int)(Math.random() * 1000000));
+        SecureRandom random = new SecureRandom();
+        StringBuilder token = new StringBuilder(TOKEN_LENGTH);
+
+        for (int i = 0; i < TOKEN_LENGTH; i++) {
+            int randomIndex = random.nextInt(CHARACTERS.length());
+            token.append(CHARACTERS.charAt(randomIndex));
+        }
+
+        return token.toString();
     }
 
     private void openTokenInputScreen(String email) {
