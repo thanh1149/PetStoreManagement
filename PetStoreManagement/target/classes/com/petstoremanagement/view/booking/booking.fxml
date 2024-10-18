@@ -31,8 +31,8 @@
                     </AnchorPane>
                     <!-- Add filter, sort buttons -->
                     <HBox spacing="10.0" GridPane.rowIndex="0" GridPane.columnIndex="1" alignment="CENTER_RIGHT">
-                        <Button fx:id="btnFilter" styleClass="button, info, sm" mnemonicParsing="false" prefHeight="26.0" text="Filter"/>
-                        <MenuButton fx:id="mnSort" text="Sort" styleClass="button, info, sm" prefHeight="26.0">
+                        <Button fx:id="btnFilter" styleClass="button, info, sm" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Filter"/>
+                        <MenuButton fx:id="mnSort" text="Sort" styleClass="mn-button, info, sm" prefHeight="26.0" prefWidth="80.0">
                             <items>
                                 <MenuItem fx:id="sortByDateAsc" text="Sort by Date (Newest to Oldest)" />
                                 <MenuItem fx:id="sortByDateDesc" text="Sort by Date (Oldest to Newest)" />

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane stylesheets="@css/login.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petstoremanagement.Controller.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petstoremanagement.Controller.LoginController">
     <left>
-        <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #404040;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="400.0" prefWidth="377.0" style="-fx-background-color: #404040;" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="400.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="false">
+                <ImageView fitHeight="400.0" fitWidth="377.0" pickOnBounds="true" preserveRatio="false">
                     <image>
                         <Image url="@../../picture/login-img.jpg" />
                     </image>
@@ -20,21 +19,18 @@
     </left>
 
     <right>
-    <AnchorPane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-        <children>
-            <TextField fx:id="txtUsername" layoutX="49.0" layoutY="163.0" prefHeight="25.0" prefWidth="202.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="txtPassword" layoutX="49.0" layoutY="202.0" prefHeight="25.0" prefWidth="202.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="btnLogin" layoutX="112.0" layoutY="255.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="76.0" style="-fx-background-color: #404040; -fx-background-radius: 0px;" text="Login" textFill="WHITE">
-                <cursor>
-                    <Cursor fx:constant="OPEN_HAND" />
-                </cursor></Button>
-            <Text fill="#404040" layoutX="81.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="137.24869537353516">
-                <font>
-                    <Font name="Wingdings 3" size="27.0" />
-                </font>
-            </Text>
-            <Label fx:id="lbInform" layoutX="59.0" layoutY="304.0" prefHeight="32.0" prefWidth="182.0" style="-fx-text-fill: red;" text="" />
-        </children>
-    </AnchorPane>
-</right>
+        <AnchorPane prefHeight="400.0" prefWidth="322.0" styleClass="right-pane" BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="txtUsername" layoutX="49.0" layoutY="152.0" prefHeight="25.0" prefWidth="202.0" promptText="Username" styleClass="text-field" />
+                <PasswordField fx:id="txtPassword" layoutX="49.0" layoutY="206.0" prefHeight="25.0" prefWidth="202.0" promptText="Password" styleClass="password-field" />
+                <Button fx:id="btnLogin" layoutX="99.0" layoutY="268.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="76.0" styleClass="login-button" text="Login" textFill="WHITE" />
+                <Text fill="#404040" layoutX="66.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" textAlignment="CENTER" wrappingWidth="168.24869537353516">
+                    <font>
+                        <Font name="Elephant" size="27.0" />
+                    </font>
+                </Text>
+                <Label fx:id="lbInform" layoutX="49.0" layoutY="324.0" prefHeight="32.0" prefWidth="232.0" style="-fx-text-fill: red;" text="" />
+            </children>
+        </AnchorPane>
+    </right>
 </BorderPane>

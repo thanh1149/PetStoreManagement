@@ -42,4 +42,8 @@ module com.petstoremanagement {
     exports com.petstoremanagement.Controller.booking;
     opens com.petstoremanagement.Controller.booking to javafx.fxml;
 
+    exports com.petstoremanagement.Controller.home;
+    opens com.petstoremanagement.Controller.home to javafx.fxml;
+
+
 }

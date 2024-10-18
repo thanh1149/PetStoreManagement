@@ -1,5 +1,6 @@
 package com.petstoremanagement.Controller;
 
+import com.petstoremanagement.Controller.home.HomeController;
 import com.petstoremanagement.Global.AppProperties;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +29,7 @@ public class MasterController implements Initializable {
     @FXML private Button btnCustomers;
     @FXML private Button btnService;
     @FXML private Button btnStaff;
-    @FXML private StackPane dashContent;
+    @FXML public StackPane dashContent;
     @FXML private Button btnOrder;
     @FXML private Button btnBooking;
 
@@ -50,7 +51,8 @@ public class MasterController implements Initializable {
         btnOrder.setOnAction(this::handleOrderButton);
         btnBooking.setOnAction(this::handleBookingButton);
 
-        dashContent.getChildren().clear();
+//        dashContent.getChildren().clear();
+        loadContent("/com/petstoremanagement/view/home/home.fxml");
     }
 
     private void showLogoutConfirmation(ActionEvent event) {
@@ -107,19 +109,36 @@ public class MasterController implements Initializable {
         loadContent("/com/petstoremanagement/view/booking/booking.fxml");
     }
 
+//    public void handleHomeButton(ActionEvent event) {
+//        loadContent("/com/petstoremanagement/view/home/home.fxml");
+//    }
+
     public void handleHomeButton(ActionEvent event) {
-        dashContent.getChildren().clear();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/petstoremanagement/view/home/home.fxml"));
+            Parent content = loader.load();
+            dashContent.getChildren().clear();
+            dashContent.getChildren().add(content);
+
+            HomeController homeController = loader.getController();
+            if (homeController != null) {
+                homeController.setMasterController(this);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadContent(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent content = loader.load();
-
             dashContent.getChildren().clear();
             dashContent.getChildren().add(content);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }

@@ -30,7 +30,7 @@
                     <TextField fx:id="txtProductName" promptText="Product name" GridPane.columnIndex="1" />
 
                     <Label text="Description" GridPane.rowIndex="1" />
-                    <TextArea fx:id="txtDescription" prefRowCount="4" promptText="Description" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextArea fx:id="txtDescription" prefRowCount="4" promptText="Description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
                     <Label text="Price" GridPane.rowIndex="2" />
                     <TextField fx:id="txtPrice" promptText="Price" GridPane.columnIndex="1" GridPane.rowIndex="2" />

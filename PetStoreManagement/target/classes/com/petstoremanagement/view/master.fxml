@@ -8,50 +8,106 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../css/master.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petstoremanagement.Controller.MasterController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" stylesheets="@../css/master.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petstoremanagement.Controller.MasterController">
     <StackPane prefHeight="700.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <BorderPane prefHeight="700.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <AnchorPane fx:id="acDashBord" prefWidth="140.0">
-                    <VBox spacing="8">
-                        <Button fx:id="btnHome" contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" text="Home" textAlignment="CENTER">
-                            <font>
-                                <Font name="Century" size="14.0" />
-                            </font>
+                    <VBox spacing="8" styleClass="VBox">
+                        <Button fx:id="btnHome" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" textAlignment="CENTER">
+                            <graphic>
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <ImageView fitHeight="30.0" fitWidth="30.0">
+                                        <image>
+                                            <Image url="@../icons/home3.png" />
+                                        </image>
+                                    </ImageView>
+                                    <Label styleClass="menuLabel" text="Home" />
+                                </HBox>
+                            </graphic>
                         </Button>
-                        <Button fx:id="btnProducts" contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" text="Products" textAlignment="CENTER">
-                            <font>
-                                <Font name="Century" size="14.0" />
-                            </font>
+
+                        <Button fx:id="btnProducts" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" textAlignment="CENTER">
+                            <graphic>
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <ImageView fitHeight="30.0" fitWidth="30.0">
+                                        <image>
+                                            <Image url="@../icons/product.png" />
+                                        </image>
+                                    </ImageView>
+                                    <Label styleClass="menuLabel" text="Products" />
+                                </HBox>
+                            </graphic>
                         </Button>
-                        <Button fx:id="btnStaff" contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" text="Staff" textAlignment="CENTER">
-                            <font>
-                                <Font name="Century" size="14.0" />
-                            </font>
+
+                        <Button fx:id="btnStaff" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" textAlignment="CENTER">
+                            <graphic>
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <ImageView fitHeight="30.0" fitWidth="30.0">
+                                        <image>
+                                            <Image url="@../icons/staff.png" />
+                                        </image>
+                                    </ImageView>
+                                    <Label styleClass="menuLabel" text="Staff" />
+                                </HBox>
+                            </graphic>
                         </Button>
-                        <Button fx:id="btnCustomers" contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" text="Customers" textAlignment="CENTER">
-                            <font>
-                                <Font name="Century" size="14.0" />
-                            </font>
+
+                        <Button fx:id="btnCustomers" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" textAlignment="CENTER">
+                            <graphic>
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <ImageView fitHeight="30.0" fitWidth="30.0">
+                                        <image>
+                                            <Image url="@../icons/customer.png" />
+                                        </image>
+                                    </ImageView>
+                                    <Label styleClass="menuLabel" text="Customers" />
+                                </HBox>
+                            </graphic>
                         </Button>
-                        <Button fx:id="btnService" contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" text="Services" textAlignment="CENTER">
-                            <font>
-                                <Font name="Century" size="14.0" />
-                            </font>
+
+                        <Button fx:id="btnService" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" textAlignment="CENTER">
+                            <graphic>
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <ImageView fitHeight="30.0" fitWidth="30.0">
+                                        <image>
+                                            <Image url="@../icons/service2.png" />
+                                        </image>
+                                    </ImageView>
+                                    <Label styleClass="menuLabel" text="Services" />
+                                </HBox>
+                            </graphic>
                         </Button>
-                        <Button fx:id="btnOrder" contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" text="Order" textAlignment="CENTER">
-                            <font>
-                                <Font name="Century" size="14.0" />
-                            </font>
+
+                        <Button fx:id="btnOrder" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" textAlignment="CENTER">
+                            <graphic>
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <ImageView fitHeight="30.0" fitWidth="30.0">
+                                        <image>
+                                            <Image url="@../icons/order.png" />
+                                        </image>
+                                    </ImageView>
+                                    <Label styleClass="menuLabel" text="Order" />
+                                </HBox>
+                            </graphic>
                         </Button>
-                        <Button fx:id="btnBooking" contentDisplay="TOP" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" text="Booking" textAlignment="CENTER">
-                            <font>
-                                <Font name="Century" size="14.0" />
-                            </font>
+
+                        <Button fx:id="btnBooking" mnemonicParsing="false" prefHeight="70.0" prefWidth="140.0" styleClass="menuButton" textAlignment="CENTER">
+                            <graphic>
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <ImageView fitHeight="30.0" fitWidth="30.0">
+                                        <image>
+                                            <Image url="@../icons/booking2.png" />
+                                        </image>
+                                    </ImageView>
+                                    <Label styleClass="menuLabel" text="Booking" />
+                                </HBox>
+                            </graphic>
                         </Button>
                     </VBox>
                 </AnchorPane>
             </left>
+
             <center>
                 <StackPane fx:id="dashContent" prefHeight="640.0" prefWidth="1060.0" />
             </center>
@@ -74,9 +130,9 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="400.0">
-                            <ImageView fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
+                            <ImageView fitHeight="100.0" fitWidth="100.0" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../picture/login-img.jpg" />
+                                    <Image url="@../icons/lg.png" />
                                 </image>
                                 <HBox.margin>
                                     <Insets left="15.0" />
@@ -86,7 +142,7 @@
                         <AnchorPane prefHeight="60.0" prefWidth="400.0" GridPane.columnIndex="1">
                         </AnchorPane>
                         <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="400.0" GridPane.columnIndex="2">
-                            <Label alignment="TOP_RIGHT" text="Hi " textAlignment="RIGHT">
+                            <Label alignment="TOP_RIGHT" text="Welcome, " textAlignment="RIGHT">
                                 <font>
                                     <Font name="Century" size="14.0" />
                                 </font>
